@@ -1,18 +1,9 @@
 # This image extends core-image with additional
-# Porpoise/Ezurio Devices packages
+# Elexontech packages
 
 LICENSE = "MIT"
 
 inherit core-image
-
-IMAGE_INSTALL_WIFI_BT ?= "${IMAGE_INSTALL_WIFI_BT_PKGS}"
-IMAGE_INSTALL_WIFI_BT_PKGS = " \
-    bdsdmac-firmware \
-    if573-sdio-firmware \
-    lwb5plus-sdio-sa-firmware \
-    nx61x-firmware-1216-serdev \
-    kernel-module-bdsdmac-backports \
-"
 
 CORE_IMAGE_EXTRA_INSTALL += " \
     atinout \
@@ -44,10 +35,9 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     spidev-test \
     spitools \
     strace \
-    u-boot-boundary-env \
+    u-boot-elexot-env \
     u-boot-fw-utils \
     udev-rules-imx \
     v4l-utils \
     wireless-regdb-static \
-    ${IMAGE_INSTALL_WIFI_BT} \
 "

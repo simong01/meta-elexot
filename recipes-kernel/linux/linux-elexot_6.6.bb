@@ -3,27 +3,27 @@
 
 require recipes-kernel/linux/linux-imx.inc
 
-SUMMARY = "Linux kernel for Ezurio Nitrogen boards"
+SUMMARY = "Linux kernel for Elexontech NXP boards"
 
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 LINUX_VERSION = "6.6.52"
 
-SRC_URI = "git://github.com/boundarydevices/linux.git;branch=${SRCBRANCH};protocol=https \
+SRC_URI = "git://github.com/simong01/bd_linux.git;branch=${SRCBRANCH};protocol=https \
 "
 
 LINUX_VERSION_EXTENSION = "+yocto"
-SRCBRANCH = "ezurio-lf-6.6.y"
-SRCREV = "7a803bdadc88a5329187a9385938c623607f0967"
+SRCBRANCH = "elexot-lf-6.6.y"
+SRCREV = "1632e4aba673eb998706dc606976143e3f7b0d56"
 DEPENDS += "lzop-native bc-native"
-COMPATIBLE_MACHINE = "(nitrogen8m|nitrogen8mm|nitrogen8mn|nitrogen8mp|nitrogen8ulp|nitrogen91|nitrogen93|nitrogen95|porpoise)"
+COMPATIBLE_MACHINE = "(nitrogen8m|nitrogen8mm|nitrogen8mn|nitrogen8mp|nitrogen8ulp|nitrogen91|nitrogen93|nitrogen95|elexotn91)"
 
-KBUILD_DEFCONFIG ?= "ezurio_defconfig"
+KBUILD_DEFCONFIG ?= "tap_defconfig"
 
 S = "${WORKDIR}/git"
 
 # In case of 8mp, kernel-module-isp-vvcam will build and cause the following error:
-# The recipe linux-boundary is trying to install files into a shared area when those files already exist (kernel-module-imx219)
+# The recipe linux-elexot is trying to install files into a shared area when those files already exist (kernel-module-imx219)
 # So we need to remove config from kernel to avoid error.
 EXTRA_OEMAKE:append:mx8mp-nxp-bsp = " CONFIG_VIDEO_IMX219=n"
