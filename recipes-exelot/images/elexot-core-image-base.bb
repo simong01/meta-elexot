@@ -41,3 +41,5 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     v4l-utils \
     wireless-regdb-static \
 "
+
+CORE_IMAGE_EXTRA_INSTALL:append:elexotn91= " linux-firmware-bcm43711"
